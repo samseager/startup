@@ -1,3 +1,3 @@
 # startup
 ## Notes
-this is a note on editing on github
+this is a note editing on github
