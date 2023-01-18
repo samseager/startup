@@ -1,7 +1,7 @@
 # Startup
 ## Movie Rankings
 #### Concept
-If you have ever sat with a significant other or a group of friends and wanted to descied on what movie to watch look no further. The you pick movie app provides 3 random choices from our list of clasics for you and your friends to vote on. Web sockets allow you and your friends to communicate before you get together. Once you all choose your prefered movie you can finally get to watching a show and no one can complain since they picked it.
+If you have ever sat with a significant other or a group of friends and wanted to descied on what movie to watch look no further. The What To Watch? movie website provides 3 random choices from our list of clasics for you and your friends to vote on. Web sockets allow you and your friends to communicate before you get together and descide on what to watch. Once you all choose your prefered movie you can finally get to watching a show and no one can complain since they picked it.
 
 ![Mock](260-startup.jpg)
 #### Features
