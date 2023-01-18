@@ -3,7 +3,7 @@
 #### Concept
 If you have ever sat with a significant other or a group of friends and wanted to descied on what movie to watch look no further. The you pick movie app provides 3 random choices from our list of clasics for you and your friends to vote on. Web sockets allow you and your friends to communicate before you get together. Once you all choose your prefered movie you can finally get to watching a show and no one can complain since they picked it.
 
-![Mock]('260-startup.pdf')
+![Mock]('260-startup.jpg')
 #### Features
 - Secure login using authentication via HTTPS 
 - Ability to start a vote and roll for random movies
