@@ -21,3 +21,7 @@ Setting a Record on a Route 53 links the ip address to the domain name
 edit caddy to allow for https access on the EC2 instance by SSH
 sudo vi caddy 
 sudo service caddy restart
+
+ssh -i ~samuel/260.pem ubuntu@3.13.218.29
+chmod  600 /Users/samuel/Downloads/260.pem
+./deployWebsite.sh -k ~samuel/260.pem -h whatshouldwewatch.click
