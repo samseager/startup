@@ -14,6 +14,7 @@ If you have ever sat with a significant other or a group of friends and wanted t
 - Results are stored
 - Ability for admin to re roll movies if they dont like any of the choices
 
+html href is super usefull 
 
 3.13.218.29 elastic IP
 Setting a Record on a Route 53 links the ip address to the domain name
