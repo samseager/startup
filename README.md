@@ -14,7 +14,7 @@ If you have ever sat with a significant other or a group of friends and wanted t
 - Results are stored
 - Ability for admin to re roll movies if they dont like any of the choices
 
-html href is super usefull 
+
 
 3.13.218.29 elastic IP
 Setting a Record on a Route 53 links the ip address to the domain name
@@ -26,3 +26,8 @@ sudo service caddy restart
 ssh -i ~samuel/260.pem ubuntu@3.13.218.29
 chmod  600 /Users/samuel/Downloads/260.pem
 ./deployWebsite.sh -k ~samuel/260.pem -h whatshouldwewatch.click
+
+#### Simon HTML Assignment
+html href is super usefull 
+I also learned alot about page formatting including the headers and the footers.
+I learned about svg and how to format the shapes and make custom buttons
