@@ -31,3 +31,12 @@ chmod  600 /Users/samuel/Downloads/260.pem
 html href is super usefull 
 I also learned alot about page formatting including the headers and the footers.
 I learned about svg and how to format the shapes and make custom buttons
+
+#### Simon CSS Assignment
+Learned what a containter is in bootstrap and how a fluid container is one that spans the whole width
+Learned that the classes in bootstrap are really important to know.
+Border-radius to set a buton to change its shape (to a circle for example)
+For sure study bootstrap classes as well as some css properties from the simon page
+The nav component is super usefull
+
+#### Startup HTML and CSS Assignment
