@@ -40,3 +40,4 @@ For sure study bootstrap classes as well as some css properties from the simon p
 The nav component is super usefull
 
 #### Startup HTML and CSS Assignment
+
