@@ -42,3 +42,5 @@ The nav component is super usefull
 #### Startup HTML and CSS Assignment
 I learned more about float and auto like using auto to put things in places I need
 I also learned alot about styling in line comments as well as using the column and row classes for bootstrap
+./deployFiles.sh -k ~samuel/260.pem -h whatshouldwewatch.click -s startup
+I also learned about how important it is to seperate portions of you html code to prevent style errors
