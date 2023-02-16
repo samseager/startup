@@ -45,6 +45,18 @@ body {
   p{
     max-width: 50em;
   }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-weight: lighter;
+    justify-content: center;
+    flex:auto;
+  }
+  tr {
+    border-right: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
   @media (max-height: 650px) {
     header {
       display: none;
