@@ -40,4 +40,5 @@ For sure study bootstrap classes as well as some css properties from the simon p
 The nav component is super usefull
 
 #### Startup HTML and CSS Assignment
-
+I learned more about float and auto like using auto to put things in places I need
+I also learned alot about styling in line comments as well as using the column and row classes for bootstrap
