@@ -52,3 +52,5 @@ I also learned how to use await functions for javascript in more depth
 I have used local store on dash before but not accessing via  localStorage.setItem("userName", nameEl.value);
 I learned how to include it in my html using the script html headder
 I also learned about how to restrict what users can do while it loads.
+
+
