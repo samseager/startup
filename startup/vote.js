@@ -35,7 +35,7 @@ class Vote{
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQslYtT_6U-CpBuAdEzJey8eUBF8qeQrS-McQ&usqp=CAU",
             name: "Harry Potter and the Sorcerer's Stone",
             length: "2h 32m",
-            descp: "An orphan enrolls in a school of wizardry.",
+            descp: "An orphan enrolls in a school of wizardry and has adventures along the way.",
             link: "https://www.imdb.com/title/tt0241527/?ref_=nv_sr_srsg_0",
         }
         const movie0 = {
@@ -74,15 +74,19 @@ class Vote{
             lenH4El.className = "card-title text-muted";
             descpEl.className = "card-test text-muted";
             const voteEl = document.createElement('button');
+            
             voteEl.className = "btn btn-primary";
             voteEl.textContent = "Vote";
             voteEl.id = i;
             voteEl.style = "margin-right : 10px;";
             voteEl.addEventListener('click', () => this.incrementVote(voteEl))
             const buttonDiv = document.createElement('div');
+
             const infoEl = document.createElement('a');
             infoEl.className = "btn btn-primary";
             infoEl.textContent = "Info";
+            infoEl.target = "_blank"
+
             const voteCountEl = document.createElement('h3');
             voteCountEl.id = "voteCount" + i;
             voteCountEl.textContent = "Votes : 0";
