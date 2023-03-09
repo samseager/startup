@@ -148,16 +148,30 @@ class Vote{
 
         const date = new Date().toLocaleDateString();
         var max = 0;
-        var mIndex = 0
+        var mIndex = 0;
+        var ir = 0;
+        var irc = [];
         for(let i = 0; i < this.votes.length; ++i){
             if (this.votes[i] > max){
-                console.log(this.votes[i])
                 max = this.votes[i];
                 mIndex = i;
+                ir = 0;
+                irc =[];
+            }
+            if(this.votes[i] === max){
+                ir++
+                irc.push(i);
+            }
+            else{
+                ir = 0;
+                irc = [];
             }
         }
         if(max === 0){
             mIndex = Math.floor(Math.random() * this.options.length);
+        }
+        else if(ir > 0){
+            mIndex = irc[Math.floor(Math.random()* irc.length)];
         }
         const name = this.options[mIndex].name;
         const newResult = { name: name, votes: max, date: date };
