@@ -54,3 +54,12 @@ I learned how to include it in my html using the script html headder
 I also learned about how to restrict what users can do while it loads.
 
 
+![Mock](Screen Shot 2023-03-07 at 6.09.51 PM.png)
+
+https port 443
+
+pals before married 
+
+.sdfklj slects class
+#selects id 
+div selects type

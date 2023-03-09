@@ -35,50 +35,10 @@
         <main class="container-fluid text-center" style="background-color:slategray;">
         <div class="container">
             <h1>Vote For What To Watch</h1>
-            <div class = "row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Option 1">
-                        <div class="card-body">
-                        <h5 class="card-title text-muted">Option 1 - 2hr 15min</h5>
-                        <p class="card-text text-muted">A breif description.</p>
-                        <a href="#" class="btn btn-primary">Vote</a>
-                        <a href="" class="btn btn-secondary">Info</a>
-                        </div>
-                    </div>
-                    <br>
-                    <h3>Votes: 4</h3>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Option 2">
-                        <div class="card-body">
-                        <h5 class="card-title text-muted">Option 2 - 1hr 30 min</h5>
-                        <p class="card-text text-muted">A breif description.</p>
-                        <a href="#" class="btn btn-primary">Vote</a>
-                        <a href="" class="btn btn-secondary">Info</a>
-                        </div>
-                    </div>
-                    <br>
-                    <h3>Votes: 1</h3>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Option 3">
-                        <div class="card-body">
-                        <h5 class="card-title text-muted">Option 3 - 3hr 05min</h5>
-                        <p class="card-text text-muted">A breif description.</p>
-                        <a href="#" class="btn btn-primary">Vote</a>
-                        <a href="" class="btn btn-secondary">Info</a>
-                        </div>
-                    </div>
-                    <br>
-                    <h3>Votes: 2</h3>
-                </div>
-            </div>
+            <div class = "row" id = "cardRow" style="display: flex;"></div>
             <div style="flex:auto; margin-top: 10px; margin-bottom: 10px">
-                <button class=" btn btn-primary">New Vote</button>
-                <button class="btn btn-primary">New Options</button>
+                <button class=" btn btn-primary" onclick="vote.newVote()">New Vote</button>
+                <button class="btn btn-primary" onclick="vote.newOptions()">New Options</button>
             </div>
         </div>
         </main>
@@ -91,5 +51,6 @@
               >Source</a>
           </div>
         </footer>
+        <script src="vote.js"></script>
     </body>
 </html>
