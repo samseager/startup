@@ -53,6 +53,13 @@ I have used local store on dash before but not accessing via  localStorage.setIt
 I learned how to include it in my html using the script html headder
 I also learned about how to restrict what users can do while it loads.
 
+#### Startup JS Assignment
+voteEl.addEventListener('click', () => this.incrementVote(voteEl)) to be able to add a button that accesses its own value in js
+I learned that the difference between length and elements matters in for loops and what each one means
+When doing element you need to add an i and a value value since it will assign both to one variable and cause problems
+I learned that not having strict types can be confusing
+I learned how to update the DOM and dynamically name and access things through the DOM
+
 
 ![Mock](Screen Shot 2023-03-07 at 6.09.51 PM.png)
 
