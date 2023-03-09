@@ -5,6 +5,8 @@ class Vote{
     constructor() {
         this.allowVote = false;
         this.loadOptions();
+        const voterNameEl = document.querySelector('.voter-name');
+        voterNameEl.textContent = this.getUserName();
     }
     loadOptions() {
         this.votes = [0,0,0]
@@ -74,7 +76,7 @@ class Vote{
             lenH4El.className = "card-title text-muted";
             descpEl.className = "card-test text-muted";
             const voteEl = document.createElement('button');
-            
+
             voteEl.className = "btn btn-primary";
             voteEl.textContent = "Vote";
             voteEl.id = i;
@@ -120,6 +122,9 @@ class Vote{
             button.disabled = true;
         }
         
+    }
+    getUserName(){
+        return localStorage.getItem('userName');
     }
     newVote(){
         this.allowVote = false;
