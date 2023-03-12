@@ -75,8 +75,8 @@ class Vote{
             const lenH4El = document.createElement('h4');
             lenH4El.className = "card-title text-muted";
             descpEl.className = "card-test text-muted";
-            const voteEl = document.createElement('button');
 
+            const voteEl = document.createElement('button');
             voteEl.className = "btn btn-primary";
             voteEl.textContent = "Vote";
             voteEl.id = i;

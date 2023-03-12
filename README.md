@@ -70,3 +70,15 @@ pals before married
 .sdfklj slects class
 #selects id 
 div selects type
+
+#### Simon Service Assignment 
+npm init -y
+git ignore file just use the file name
+index.js is the name of your service typically
+npm install express
+Right now the service is storing stuff until reset so still not in a DB
+res.sendFile('index.html', { root: 'public' }); for serving the index.html file 
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+}); for listening on a port 
+Have seperate port for seperate subdomains
