@@ -92,3 +92,20 @@ npm install mongodb
 ssh -i ~samuel/260.pem ubuntu@3.13.218.29
 sudo vi /etc/environment
 pm2 restart all --update-env
+
+#### Simon DB Assignment
+
+use display: none to not show a section of code you want to reveal later
+fetch(`/api/auth/logout`) to utilize api's
+  const user = await DB.getUser(req.body.email);
+  if (user) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+  for loging in 
+  using json.stringify for converting
+   bcrypt.compare( to compare pass
