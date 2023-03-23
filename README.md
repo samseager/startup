@@ -109,3 +109,11 @@ fetch(`/api/auth/logout`) to utilize api's
   for loging in 
   using json.stringify for converting
    bcrypt.compare( to compare pass
+
+#### Simon Websocket
+to initialize websocket
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+on open/onclose helps change stuff when socket opened or closed
+onmessage sets listening for socket
+broadcastevent to send to all devices
