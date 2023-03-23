@@ -82,3 +82,13 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 }); for listening on a port 
 Have seperate port for seperate subdomains
+
+#### Simon DB Assignment
+I learned from the code how to connect to a db in javascript
+Also learning how to set environment variables was super usefull
+const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+const client = new MongoClient(url);
+npm install mongodb
+ssh -i ~samuel/260.pem ubuntu@3.13.218.29
+sudo vi /etc/environment
+pm2 restart all --update-env
