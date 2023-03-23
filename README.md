@@ -93,7 +93,7 @@ ssh -i ~samuel/260.pem ubuntu@3.13.218.29
 sudo vi /etc/environment
 pm2 restart all --update-env
 
-#### Simon DB Assignment
+#### Simon Login Assignment
 
 use display: none to not show a section of code you want to reveal later
 fetch(`/api/auth/logout`) to utilize api's
