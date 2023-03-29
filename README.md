@@ -117,3 +117,17 @@ this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 on open/onclose helps change stuff when socket opened or closed
 onmessage sets listening for socket
 broadcastevent to send to all devices
+
+#### Simon React
+
+Lots to learn on this one
+Seperate files into src with each "page in its own folder"
+Index.jsx helps pull it together along with the app.jsx 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+Use routes for "page" navigation
+Render everything in the jsx files
