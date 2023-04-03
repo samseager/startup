@@ -145,8 +145,7 @@ class Vote{
               body: JSON.stringify(newResult),
             });
       
-            // Let other players know the vote has concluded
-            this.broadcastEvent(this.getUserName(), VoteEndEvent, newResult);
+            // this.broadcastEvent(this.getUserName(), VoteEndEvent, newResult);
       
             // Store what the service gave us as the high scores
             const results = await response.json();
