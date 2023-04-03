@@ -140,7 +140,7 @@ for getting response
     .then((data) => {
       displayCallback(data);
     });
-    
+
   for socket
    httpServer.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, function done(ws) {
@@ -149,3 +149,9 @@ for getting response
   });
 
   ./deployService.sh -k ~samuel/260.pem -h whatshouldwewatch.click -s startup
+
+  pm2 restart for updating env vars
+  pm2 restart all --update-env
+  pm2 save
+
+  Honestly just learned how finicky they could be
