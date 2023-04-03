@@ -131,3 +131,11 @@ root.render(
 );
 Use routes for "page" navigation
 Render everything in the jsx files
+
+
+#### Startup Service
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayCallback(data);
+    });

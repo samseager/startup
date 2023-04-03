@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>About</title>
         <link rel="icon" href="profile.png" />
-        <script src="login.js"></script>
+        <script src="about.js"></script>
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="about.css" />
         <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,7 +16,7 @@
     </head>
     <body class="text-light">
       <header class="container-fluid">
-        <nav class="navbar fixed-top navbar-light" >
+        <nav class="navbar fixed-top navbar-light">
           <a class="navbar-brand" href="#">What to Watch?</a>
           <menu class="navbar-nav">
             <li class="nav-item">
@@ -34,18 +35,27 @@
         </nav>
       </header>  
         <main class="container-fluid text-center" style="background-color:slategray;">
-          <div>
-            <h1>Welcome to What to Watch</h1>
-            <p>Login to continue</p>
-            <form method="get" action="vote.html">
-              <input type="text" id="name" placeholder="Username" />
-              <br>
-              <input type="password" id="password" placeholder="Password" style="margin-top: 10px"/>
-              <br>
-              <button type="submit" class="btn btn-primary"  onclick="login()" style="margin-top: 10px">Login</button>
-            </form>
-          </div>
+            <div class="container" style="width:auto">
+                <h1>About What To Watch</h1>
+                <div style="margin-top: 5vh;">
+                    <p>
+                        What to Watch is an app designed to help groups of people make decisions on what to watch when it comes to movies or TV shows. 
+                        The app's purpose is to streamline the process of making a group decision on what to watch by 
+                        allowing each person in the group to vote on their preference. 
+                        This can help prevent long and potentially frustrating discussions about what to watch, 
+                        as the app provides a quick and easy way to come to a group consensus.
+                    </p>
+                    <p>
+                        The app allows the user to create a poll with a list of available movies or TV shows to choose from, 
+                        and then share that poll with their group. Each member of the group can then cast their vote, and the app 
+                        will tally the results to show which option has the most votes. The group can then make a decision based on the results, 
+                        and avoid any arguments or disagreements that might otherwise arise.
+                    </p>
+                </div>
+                <div id="quote" class="quote-box text-dark"></div>
+            </div>
         </main>
+        
         <footer class="bg-light text-dark text-muted">
           <div class="container-fluid">
             <span class="text-reset">Author: Samuel Seager</span>
