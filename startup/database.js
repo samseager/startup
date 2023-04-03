@@ -14,7 +14,8 @@ const url = `mongodb+srv://${userName}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
 const userCollection = client.db('startup').collection('user');
-const scoreCollection = client.db('startup').collection('score');
+const resultCollection = client.db('startup').collection('result');
+const movieCollection = client.db('startup').collection('movies');
 
 function getUser(email) {
   return userCollection.findOne({ email: email });
@@ -38,8 +39,8 @@ async function createUser(email, password) {
   return user;
 }
 
-function addScore(score) {
-  scoreCollection.insertOne(score);
+function addResult(result) {
+  resultCollection.insertOne(result);
 }
 
 function getRecentVotes() {
@@ -48,14 +49,24 @@ function getRecentVotes() {
     sort: { date: -1 },
     limit: 10,
   };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = resultCollection.find(query, options);
+  console.log(cursor)
   return cursor.toArray();
+}
+
+function getMovies(){
+  const query = {};
+  const pipeline = [
+    { $match: {} },
+    { $sample: { size: 3 } },];
+  return movieCollection.aggregate(pipeline).toArray();
 }
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addScore,
+  addResult,
   getRecentVotes,
+  getMovies,
 };

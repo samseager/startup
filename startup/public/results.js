@@ -2,8 +2,10 @@ async function loadResults() {
   let results = [];
   try {
     // Get the latest high results from the service
-    const response = await fetch('/api/results');
+    console.log("fetching results");
+    const response = await fetch('/api/result');
     results = await response.json();
+    console.log("fetched results")
 
     // Save the results in case we go offline in the future
     localStorage.setItem('results', JSON.stringify(results));

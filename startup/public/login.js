@@ -6,6 +6,7 @@
     nameEl.value = userName;
     const user = await getUser(nameEl.value);
     authenticated = user?.authenticated;
+    console.log(user)
   }
 
   if (authenticated) {
@@ -49,8 +50,8 @@ async function loginOrCreate(endpoint) {
   }
 }
 
-function play() {
-  window.location.href = 'play.html';
+function vote() {
+  window.location.href = 'vote.html';
 }
 
 function logout() {

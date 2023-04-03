@@ -1,62 +1,22 @@
+const VoteEndEvent = 'voteEnd';
+const VoteStartEvent = 'voteStart';
+
 class Vote{
     options;
     votes; 
     allowVote;
     constructor() {
         this.allowVote = false;
-        this.loadOptions();
+        this.configureWebSocket();
         const voterNameEl = document.querySelector('.voter-name');
         voterNameEl.textContent = this.getUserName();
     }
-    loadOptions() {
+    async loadOptions() {
         this.votes = [0,0,0]
-        let options = [];
-        const movies = new Set();
-        const movie4 = {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9ZSnTukIOXapVtDDPenYDtKVP_HVrygQ5A&usqp=CAU",
-            name: "Interstellar",
-            length: "2h 49m",
-            descp: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-            link: "https://www.imdb.com/title/tt0816692/?ref_=nv_sr_srsg_0"
-        }
-        const movie3 = {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIB_1AQva-z7WY3dFJI6SH9ITIPlhqeWdZvw&usqp=CAU",
-            name: "Puss in Boots: The Last Wish",
-            length: "1h 42m",
-            descp: "Puss in Boots launches an epic journey to find the last wish",
-            link: "https://www.imdb.com/title/tt3915174/?ref_=nv_sr_srsg_2",
-        }
-        const movie2 = {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_QCpEgd1O6PYyMS6nVR3NDy7PNAthMivIRA&usqp=CAU",
-            name: "Black Panther",
-            length: "2h 14m",
-            descp: "The Black Panther fights to protect his people from a familiar enemy.",
-            link: "https://www.imdb.com/title/tt1825683/?ref_=nv_sr_srsg_5",
-        }
-        const movie1 = {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQslYtT_6U-CpBuAdEzJey8eUBF8qeQrS-McQ&usqp=CAU",
-            name: "Harry Potter and the Sorcerer's Stone",
-            length: "2h 32m",
-            descp: "An orphan enrolls in a school of wizardry and has adventures along the way.",
-            link: "https://www.imdb.com/title/tt0241527/?ref_=nv_sr_srsg_0",
-        }
-        const movie0 = {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLuTj-JmJhfCm0_nHtQei7BHZV9DpiNj14HA&usqp=CAU",
-            name: "Wedding Crashers",
-            length: "1h 59m",
-            descp: "Two wedding crashers are at odds after one falls in love.",
-            link: "https://www.imdb.com/title/tt0396269/?ref_=nv_sr_srsg_0",
-        }
-        options.push(movie0);
-        options.push(movie2);
-        options.push(movie1);
-        options.push(movie3);
-        options.push(movie4);
         const rowEl = document.querySelector('#cardRow');
-        while (movies.size < 3) {
-            movies.add(options[Math.floor(Math.random() * options.length)]);
-        }
-        this.options = Array.from(movies);
+        const response = await fetch('/api/movie');
+        this.options = await response.json();
+
         for (const [i, option] of this.options.entries()) {
             const coldEl = document.createElement('div');
             coldEl.className = "col-md-4";
@@ -113,39 +73,41 @@ class Vote{
             coldEl.appendChild(voteCountEl);
         }
         this.allowVote = true;
+        
+        this.broadcastEvent(this.getUserName(), VoteStartEvent, {});
+
     }
+
     incrementVote(button){
         if(this.allowVote){
             this.votes[button.id]++;
             const voteOP = document.getElementById("voteCount" + button.id);
             voteOP.textContent = "Votes : " + this.votes[button.id];
-            button.disabled = true;
         }
-        
     }
+
     getUserName(){
-        return localStorage.getItem('userName');
+        return localStorage.getItem('userName') ?? 'Mystery player';
     }
+
     newVote(){
+        if(this.allowVote === true){
+            this.score()
+        }
         this.allowVote = false;
         const rowEl = document.querySelector('#cardRow');
-        this.score()
         rowEl.innerHTML = ""
         this.loadOptions();
     }
+
     newOptions(){
         this.allowVote = false;
         const rowEl = document.querySelector('#cardRow');
         rowEl.innerHTML = ""
         this.loadOptions();
     }
-    score(){
-        let results = [];
-        const resultsText = localStorage.getItem('results');
-        if (resultsText) {
-          results = JSON.parse(resultsText);
-        }
 
+    async score(){
         const date = new Date().toLocaleDateString();
         var max = 0;
         var mIndex = 0;
@@ -176,14 +138,83 @@ class Vote{
         const name = this.options[mIndex].name;
         const newResult = { name: name, votes: max, date: date };
 
-        results.push(newResult);
-
-        if (results.length > 10) {
-        results.length = 10;
+        try {
+            const response = await fetch('/api/result', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(newResult),
+            });
+      
+            // Let other players know the vote has concluded
+            this.broadcastEvent(this.getUserName(), VoteEndEvent, newResult);
+      
+            // Store what the service gave us as the high scores
+            const results = await response.json();
+            localStorage.setItem('results', JSON.stringify(results));
+        } catch {
+            // If there was an error then just track scores locally
+            this.updateResultsLocal(newResult);
         }
-        localStorage.setItem('results', JSON.stringify(results));
-
         return;
     }
+
+    updateResultsLocal(newResult) {
+        let results = [];
+        const resultText = localStorage.getItem('results');
+        if (resultText) {
+          results = JSON.parse(resultText);
+        }
+        let found = false;
+        for (const [i, prevResult] of results.entries()) {
+            if (newResult > prevResult.result) {
+                results.splice(i, 0, newResult);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            results.push(newResult);
+          }
+      
+          if (results.length > 10) {
+            results.length = 10;
+          }
+      
+          localStorage.setItem('results', JSON.stringify(results));
+    }
+
+    configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        this.socket.onopen = (event) => {
+        this.displayMsg('system', 'vote', 'connected');
+        };
+        this.socket.onclose = (event) => {
+        this.displayMsg('system', 'vote', 'disconnected');
+        };
+        this.socket.onmessage = async (event) => {
+        const msg = JSON.parse(await event.data.text());
+        if (msg.type === VoteEndEvent) {
+            this.displayMsg('voter', msg.from, `ended vote, winner ${msg.value.name}`);
+        } else if (msg.type === VoteStartEvent) {
+            this.displayMsg('voter', msg.from, `started a new vote`);
+        }
+        };
+    }
+    displayMsg(cls, from, msg) {
+        const chatText = document.querySelector('#player-messages');
+        chatText.innerHTML =
+          `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+      }
+    
+      broadcastEvent(from, type, value) {
+        const event = {
+          from: from,
+          type: type,
+          value: value,
+        };
+        this.socket.send(JSON.stringify(event));
+      }
 }
+
 const vote = new Vote();

@@ -134,8 +134,18 @@ Render everything in the jsx files
 
 
 #### Startup Service
+for getting response
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       displayCallback(data);
     });
+    
+  for socket
+   httpServer.on('upgrade', (request, socket, head) => {
+    wss.handleUpgrade(request, socket, head, function done(ws) {
+      wss.emit('connection', ws, request);
+    });
+  });
+
+  ./deployService.sh -k ~samuel/260.pem -h whatshouldwewatch.click -s startup
